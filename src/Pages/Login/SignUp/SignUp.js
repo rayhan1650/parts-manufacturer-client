@@ -1,16 +1,47 @@
 import React from "react";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading/Loading";
 
 const SignUp = () => {
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const onSubmit = (data) => {
-    console.log("Hello");
+
+  const navigate = useNavigate();
+
+  let signInError;
+
+  if (user) {
+    navigate("/home");
+  }
+  if (error) {
+    signInError = (
+      <p className="text-red-500">
+        <small>{error?.message}</small>
+      </p>
+    );
+  }
+  if (loading) {
+    return <Loading />;
+  }
+
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
+    console.log("update done");
   };
   return (
     <div className="flex h-screen justify-center items-center">
@@ -115,7 +146,9 @@ const SignUp = () => {
               </label>
             </div>
 
-            {/* Login button  */}
+            {signInError}
+
+            {/* SignUp button  */}
             <input
               className="btn w-full max-w-xs text-white"
               type="submit"
