@@ -48,7 +48,7 @@ const Header = () => {
         </div>
 
         {/* website logo  */}
-        <Link to="/home" className="btn btn-ghost normal-case text-xl">
+        <Link to="/" className="btn btn-ghost normal-case text-xl">
           Manufacturer
         </Link>
       </div>
