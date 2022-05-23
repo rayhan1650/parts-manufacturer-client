@@ -2,13 +2,17 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
     formState: { errors },
@@ -19,13 +23,13 @@ const Login = () => {
 
   let signInError;
 
-  if (user) {
+  if (user || gUser) {
     navigate("/home");
   }
-  if (error) {
+  if (error || gError) {
     signInError = (
       <p className="text-red-500">
-        <small>{error?.message}</small>
+        <small>{error?.message || gError?.message}</small>
       </p>
     );
   }
@@ -137,7 +141,7 @@ const Login = () => {
 
           {/* social login  */}
           <button
-            // onClick={() => signInWithGoogle()}
+            onClick={() => signInWithGoogle()}
             className="btn btn-outline btn-primary"
           >
             <FcGoogle className="mr-4 text-xl" />

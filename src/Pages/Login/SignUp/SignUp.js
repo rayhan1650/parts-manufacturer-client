@@ -1,6 +1,7 @@
 import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
@@ -12,6 +13,7 @@ import Loading from "../../Shared/Loading/Loading";
 const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const {
@@ -24,17 +26,21 @@ const SignUp = () => {
 
   let signInError;
 
-  if (user) {
+  if (user || gUser) {
     navigate("/home");
   }
-  if (error) {
+
+  if (error || gError || updateError) {
     signInError = (
       <p className="text-red-500">
-        <small>{error?.message}</small>
+        <small>
+          {error?.message || gError?.message || updateError?.message}
+        </small>
       </p>
     );
   }
-  if (loading) {
+
+  if (loading || gLoading || updating) {
     return <Loading />;
   }
 
@@ -168,7 +174,7 @@ const SignUp = () => {
 
           {/* social login  */}
           <button
-            // onClick={() => signInWithGoogle()}
+            onClick={() => signInWithGoogle()}
             className="btn btn-outline btn-primary"
           >
             <FcGoogle className="mr-4 text-xl" />
