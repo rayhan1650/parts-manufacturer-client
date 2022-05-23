@@ -75,7 +75,8 @@ const Header = () => {
           <li>
             {user ? (
               <p>
-                {user.displayName} <button onClick={logout}>Log out</button>
+                <span className="font-bold">{user.displayName}</span>
+                <button onClick={logout}>Log Out</button>
               </p>
             ) : (
               <Link to="/login">Login</Link>

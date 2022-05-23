@@ -1,16 +1,40 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading/Loading";
 
 const Login = () => {
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const navigate = useNavigate();
+
+  let signInError;
+
+  if (user) {
+    navigate("/home");
+  }
+  if (error) {
+    signInError = (
+      <p className="text-red-500">
+        <small>{error?.message}</small>
+      </p>
+    );
+  }
+  if (loading) {
+    return <Loading />;
+  }
+
   const onSubmit = (data) => {
-    console.log("Hello");
+    signInWithEmailAndPassword(data.email, data.password);
   };
   return (
     <div className="flex h-screen justify-center items-center">
@@ -90,6 +114,8 @@ const Login = () => {
                 )}
               </label>
             </div>
+
+            {signInError}
 
             {/* Login button  */}
             <input
