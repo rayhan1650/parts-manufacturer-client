@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="navbar bg-base-100 sticky top-0">
+    <div className="navbar bg-base-100 z-50 sticky top-0">
       <div className="navbar-start">
         {/* for dropdown  */}
         <div className="dropdown">
