@@ -1,56 +1,56 @@
 [
   {
     "_id": 1,
-    "price_perUnit": 2165,
+    "pricePerUnit": 2165,
     "img": "https://unsplash.com/photos/ndgy5oZwdUY",
     "name": "Chen",
-    "minOrder_quantity": 14,
-    "available_quantity": 4,
+    "minOrderQuantity": 14,
+    "availableQuantity": 400,
     "description": "Est amet ipsum do adipisicing non dolor voluptate consectetur ipsum eu consequat."
   },
   {
     "_id": 2,
-    "price_perUnit": 3214,
+    "pricePerUnit": 3214,
     "img": "https://unsplash.com/photos/ndgy5oZwdUY",
     "name": "Mcguire",
-    "minOrder_quantity": 13,
-    "available_quantity": 73,
+    "minOrderQuantity": 13,
+    "availableQuantity": 730,
     "description": "Commodo anim laboris ex aliqua excepteur eu elit sint pariatur exercitation nulla eu occaecat."
   },
   {
     "_id": 3,
-    "price_perUnit": 1767,
+    "pricePerUnit": 1767,
     "img": "https://unsplash.com/photos/ndgy5oZwdUY",
     "name": "Mann",
-    "minOrder_quantity": 65,
-    "available_quantity": 60,
+    "minOrderQuantity": 65,
+    "availableQuantity": 600,
     "description": "Ad do sit duis sunt."
   },
   {
     "_id": 4,
-    "price_perUnit": 1671,
+    "pricePerUnit": 1671,
     "img": "https://unsplash.com/photos/ndgy5oZwdUY",
     "name": "Maxwell",
-    "minOrder_quantity": 86,
-    "available_quantity": 56,
+    "minOrderQuantity": 86,
+    "availableQuantity": 560,
     "description": "Irure ex eu in esse veniam."
   },
   {
     "_id": 5,
-    "price_perUnit": 2140,
+    "pricePerUnit": 2140,
     "img": "https://unsplash.com/photos/ndgy5oZwdUY",
     "name": "Snow",
-    "minOrder_quantity": 73,
-    "available_quantity": 48,
+    "minOrderQuantity": 73,
+    "availableQuantity": 480,
     "description": "Id do tempor voluptate eu consectetur elit id ut velit qui esse sint duis."
   },
   {
     "_id": 6,
-    "price_perUnit": 3956,
+    "pricePerUnit": 3956,
     "img": "https://unsplash.com/photos/ndgy5oZwdUY",
     "name": "Butler",
-    "minOrder_quantity": 79,
-    "available_quantity": 1,
+    "minOrderQuantity": 79,
+    "availableQuantity": 1000,
     "description": "Pariatur ipsum laboris exercitation aliqua commodo nisi."
   }
 ]
