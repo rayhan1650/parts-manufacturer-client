@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 sticky top-0">
       <div className="navbar-start">
         {/* for dropdown  */}
         <div className="dropdown">
@@ -66,7 +66,7 @@ const Header = () => {
       <div className="navbar-end">
         <ul className="menu menu-horizontal p-0">
           <li>
-            <Link to="/home">Login</Link>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </div>
