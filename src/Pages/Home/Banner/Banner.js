@@ -13,11 +13,7 @@ const Banner = () => {
           </p>
           <button className="btn btn-primary">Get Started</button>
         </div>
-        <img
-          src="https://api.lorem.space/image/movie?w=260&h=400"
-          className="max-w-sm rounded-lg shadow-2xl"
-          alt=""
-        />
+        <img src="car_parts.png" alt="" />
       </div>
     </div>
   );
