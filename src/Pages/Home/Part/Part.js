@@ -2,6 +2,7 @@ import React from "react";
 
 const Part = ({ part }) => {
   const {
+    _id,
     name,
     img,
     description,
@@ -10,13 +11,13 @@ const Part = ({ part }) => {
     pricePerUnit,
   } = part;
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card bg-base-50 shadow-xl">
       <figure className="px-10 pt-10 bg-sky-100">
-        <img src="tire.png" alt="Shoes" className="rounded-xl" />
+        <img src={img} alt="Shoes" className="rounded-xl max-h-72" />
       </figure>
       <div className="card-body">
         <h2 className="card-title text-primary">{name}</h2>
-        <p>{description}</p>
+        <p className="text-justify">{description}</p>
         <h4 className="font-bold">Available Quantity: {availableQuantity}</h4>
         <h4 className="font-bold">
           Minimum Order Quantity: {minOrderQuantity}
