@@ -1,69 +1,52 @@
 import React from "react";
+import { RiCustomerService2Line } from "react-icons/ri";
+import { MdAttachMoney, MdReviews } from "react-icons/md";
+import { SiProtools } from "react-icons/si";
 
 const BusinessSummary = () => {
   return (
-    <div className="shadow flex flex-col lg:flex-row ">
-      <div className="stat">
-        <div className="stat-figure text-secondary">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            className="inline-block w-8 h-8 stroke-current"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            ></path>
-          </svg>
-        </div>
-        <div className="stat-title">Downloads</div>
-        <div className="stat-value">31K</div>
-        <div className="stat-desc">Jan 1st - Feb 1st</div>
-      </div>
+    <div className="my-6  px-2 lg:px-14">
+      <h2 className="font-bold text-2xl lg:text-4xl text-center  text-secondary uppercase">
+        Our Commitment to Quality and Trust
+      </h2>
+      <h4 className="text-primary text-center lg:text-lg uppercase font-bold px-8 lg:px-0">
+        <q>Trust is the foundation of every successful sale</q>
+      </h4>
+      <hr className="mb-5" />
+      <div className="shadow flex flex-col lg:flex-row ">
+        <div className="stat flex flex-col text-center">
+          <div className="stat-figure text-secondary text-4xl ">
+            <RiCustomerService2Line />
+          </div>
 
-      <div className="stat">
-        <div className="stat-figure text-secondary">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            className="inline-block w-8 h-8 stroke-current"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-            ></path>
-          </svg>
+          <div className="stat-value text-primary">150+</div>
+          <div className=" text-secondary">We Served</div>
         </div>
-        <div className="stat-title">New Users</div>
-        <div className="stat-value">4,200</div>
-        <div className="stat-desc">↗︎ 400 (22%)</div>
-      </div>
 
-      <div className="stat">
-        <div className="stat-figure text-secondary">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            className="inline-block w-8 h-8 stroke-current"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-            ></path>
-          </svg>
+        <div className="stat  flex flex-col text-center">
+          <div className="stat-figure text-secondary">
+            <div className="stat-figure text-secondary text-4xl ">
+              <MdAttachMoney />
+            </div>
+          </div>
+          <div className="stat-value text-primary">90M+</div>
+          <div className=" text-secondary">Annual Revenue</div>
         </div>
-        <div className="stat-title">New Registers</div>
-        <div className="stat-value">1,200</div>
-        <div className="stat-desc">↘︎ 90 (14%)</div>
+
+        <div className="stat  flex flex-col text-center">
+          <div className="stat-figure text-secondary text-4xl">
+            <MdReviews />
+          </div>
+          <div className="stat-value text-primary">43K+</div>
+          <div className=" text-secondary">Reviews</div>
+        </div>
+        <div className="stat  flex flex-col text-center">
+          <div className="stat-figure text-secondary text-4xl">
+            <SiProtools />
+          </div>
+          <div className="stat-value text-primary">76+</div>
+          <div className=" text-secondary">Parts</div>
+        </div>
       </div>
     </div>
   );
