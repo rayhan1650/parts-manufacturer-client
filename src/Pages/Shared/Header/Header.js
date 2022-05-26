@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
@@ -112,28 +112,30 @@ const Header = ({ displayName }) => {
         </ul>
       </div>
       {/* dashboard button for mobile  */}
-      <div className="navbar-end lg:hidden">
-        <label
-          tabIndex="1"
-          htmlFor="dashboard-sidebar"
-          className="btn btn-ghost "
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+      {user && (
+        <div className="navbar-end lg:hidden">
+          <label
+            tabIndex="1"
+            htmlFor="dashboard-sidebar"
+            className="btn btn-ghost "
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h8m-8 6h16"
-            />
-          </svg>
-        </label>
-      </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
+        </div>
+      )}
     </div>
   );
 };

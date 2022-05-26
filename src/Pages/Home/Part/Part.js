@@ -20,11 +20,15 @@ const Part = ({ part }) => {
   return (
     <div className="card bg-base-50 shadow-xl">
       <figure className="px-10 pt-10 bg-sky-100">
-        <img src={img} alt="Shoes" className="rounded-xl max-h-72" />
+        <img src={img} alt={`Car ${name}`} className="rounded-xl max-h-72" />
       </figure>
       <div className="card-body">
         <h2 className="card-title text-primary">{name}</h2>
-        <p className="text-justify">{description}</p>
+        <p className="text-justify">
+          {description.length > 180
+            ? `${description.slice(0, 180)} ....`
+            : description}
+        </p>
         <h4 className="font-bold">Available Quantity: {availableQuantity}</h4>
         <h4 className="font-bold">
           Minimum Order Quantity: {minOrderQuantity}
