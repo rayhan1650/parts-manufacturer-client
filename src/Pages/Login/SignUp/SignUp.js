@@ -1,4 +1,3 @@
-import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
@@ -10,7 +9,11 @@ import { FcGoogle } from "react-icons/fc";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 
-const SignUp = () => {
+const SignUp = ({ getName }) => {
+  const handleName = (name) => {
+    getName(name);
+  };
+
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -47,7 +50,7 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-    console.log("update done");
+    handleName(data.name);
   };
   return (
     <div className="flex h-screen justify-center items-center">

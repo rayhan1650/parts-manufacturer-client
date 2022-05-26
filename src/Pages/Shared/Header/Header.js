@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
 import { signOut } from "firebase/auth";
+import Loading from "../Loading/Loading";
 
-const Header = () => {
-  const [user] = useAuthState(auth);
+const Header = ({ displayName }) => {
+  const [user, loading] = useAuthState(auth);
+
   const logout = () => {
     signOut(auth);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div className="navbar bg-base-100 z-50 sticky top-0">
       <div className="navbar-start">
@@ -41,18 +48,35 @@ const Header = () => {
               <Link to="/blogs">Blogs</Link>
             </li>
 
+            {user && (
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+            )}
+
             <li>
-              <a>Item 3</a>
+              {user ? (
+                <p onClick={logout} className="border">
+                  <span className="font-bold text-secondary">
+                    {displayName || user?.displayName}
+                  </span>
+                  Log Out
+                </p>
+              ) : (
+                <Link to="/login">Login</Link>
+              )}
             </li>
           </ul>
         </div>
 
         {/* website logo  */}
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
-          Manufacturer
+        <Link
+          to="/"
+          className="btn btn-ghost normal-case text-primary font-bold text-xl"
+        >
+          CAR-PARTS
         </Link>
       </div>
-
       {/* for main navigation items  */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
@@ -63,26 +87,52 @@ const Header = () => {
             <Link to="/blogs">Blogs</Link>
           </li>
 
-          <li>
-            <Link to="/blogs">Blogs</Link>
-          </li>
+          {user && (
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+          )}
         </ul>
       </div>
-
       {/* for end nav  */}
-      <div className="navbar-end">
+      <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
           <li>
             {user ? (
-              <p>
-                <span className="font-bold">{user.displayName}</span>
-                <button onClick={logout}>Log Out</button>
+              <p onClick={logout} className="border">
+                <span className="font-bold text-secondary">
+                  {displayName || user?.displayName}
+                </span>
+                Log Out
               </p>
             ) : (
               <Link to="/login">Login</Link>
             )}
           </li>
         </ul>
+      </div>
+      {/* dashboard button for mobile  */}
+      <div className="navbar-end lg:hidden">
+        <label
+          tabIndex="1"
+          htmlFor="dashboard-sidebar"
+          className="btn btn-ghost "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </label>
       </div>
     </div>
   );
