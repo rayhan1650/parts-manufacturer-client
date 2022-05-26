@@ -10,7 +10,7 @@ const Reviews = () => {
   }, []);
   return (
     <div className="px-2 py-6 lg:px-14">
-      <h2 className="text-center font-bold text-4xl text-primary mb-6">
+      <h2 className="text-center font-bold text-4xl text-secondary mb-6">
         Reviews
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 ">
