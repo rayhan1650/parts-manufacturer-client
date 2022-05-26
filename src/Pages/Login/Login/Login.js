@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import {
   useSignInWithEmailAndPassword,
@@ -20,11 +20,13 @@ const Login = () => {
   } = useForm();
 
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   let signInError;
 
   if (user || gUser) {
-    navigate("/home");
+    navigate(from, { replace: true });
   }
   if (error || gError) {
     signInError = (
@@ -33,7 +35,7 @@ const Login = () => {
       </p>
     );
   }
-  if (loading) {
+  if (loading || gLoading) {
     return <Loading />;
   }
 

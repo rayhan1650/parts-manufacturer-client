@@ -2,7 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Blogs from "./Pages/Blogs/Blogs";
 import Home from "./Pages/Home/Home/Home";
+import Purchase from "./Pages/Home/Purchase/Purchase";
 import Login from "./Pages/Login/Login/Login";
+import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
 import SignUp from "./Pages/Login/SignUp/SignUp";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Header from "./Pages/Shared/Header/Header";
@@ -18,6 +20,15 @@ function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+
+        <Route
+          path="/purchase/:id"
+          element={
+            <RequireAuth>
+              <Purchase />
+            </RequireAuth>
+          }
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
