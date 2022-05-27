@@ -1,13 +1,13 @@
-import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import auth from "../../../firebase.init";
 import { signOut } from "firebase/auth";
 import Loading from "../Loading/Loading";
 
 const Header = ({ displayName }) => {
   const [user, loading] = useAuthState(auth);
-
+  const location = useLocation();
+  const dashboardURL = location.pathname.includes("/dashboard");
   const logout = () => {
     signOut(auth);
   };
@@ -112,16 +112,16 @@ const Header = ({ displayName }) => {
         </ul>
       </div>
       {/* dashboard button for mobile  */}
-      {user && (
+      {user && dashboardURL && (
         <div className="navbar-end lg:hidden">
           <label
             tabIndex="1"
             htmlFor="dashboard-sidebar"
-            className="btn btn-ghost "
+            className="btn btn-ghost"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-5 w-5 rotate-180"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
