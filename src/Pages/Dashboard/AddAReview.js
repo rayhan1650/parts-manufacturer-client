@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactStars from "react-rating-stars-component";
+import { useForm } from "react-hook-form";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const AddAReview = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(event);
+  const [user] = useAuthState(auth);
+  const [rating, setRating] = useState(0);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const ratingChanged = (num) => {
+    setRating(num);
+  };
+  const onSubmit = (data) => {
+    console.log(data.comment, rating, user.displayName);
   };
   return (
     <div className="flex justify-center items-center mt-8">
@@ -13,42 +27,29 @@ const AddAReview = () => {
         </h2>
         <div className="card lg:w-96 bg-base-100 shadow-xl">
           <div className="card-body">
-            <form onSubmit={handleSubmit}>
-              <div className="rating">
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
+            <div className="flex justify-between items-center">
+              <div>
+                <ReactStars
+                  onChange={ratingChanged}
+                  isHalf={true}
+                  size={36}
+                  activeColor="#E48111"
                 />
               </div>
+              <div className="text-warning text-2xl font-bold">{rating}</div>
+            </div>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <textarea
-                name="review"
+                {...register("comment", { required: true })}
                 placeholder="Write About Our Services"
                 id=""
                 cols="30"
                 rows="8"
                 className="input input-bordered input-primary h-full w-full max-w-xs my-4"
-              ></textarea>
+              />
+              <p className="text-red-500">
+                {errors.comment && "Your comment is required"}
+              </p>
 
               <input
                 className="btn btn-primary "
