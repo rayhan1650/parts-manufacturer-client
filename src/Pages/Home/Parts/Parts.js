@@ -10,10 +10,15 @@ const Parts = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 px-2 py-6 lg:px-14">
-      {parts.slice(0, 6).map((part) => (
-        <Part key={part._id} part={part} />
-      ))}
+    <div className="my-12">
+      <h2 className="font-bold text-center text-accent text-5xl ">
+        Latest Parts
+      </h2>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 px-2 py-6 lg:px-14">
+        {parts.slice(0, 6).map((part) => (
+          <Part key={part._id} part={part} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -51,8 +51,8 @@ const BusinessSummary = () => {
       </div>
       {/* contact info  */}
       <div className="card lg:w-11/12 bg-base-100 shadow-xl mx-auto">
-        <div className="card-body">
-          <h2 className="card-title uppercase text-accent font-bold">
+        <div className="card-body text-center px-2">
+          <h2 className="card-title  uppercase  text-accent font-bold">
             Have Any Question About Us Or Get a Products Request?
           </h2>
           <p className="text-primary font-bold">
