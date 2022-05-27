@@ -1,0 +1,4 @@
+.filter-color:hover {
+  filter: invert(20%) sepia(79%) saturate(2476%) hue-rotate(25deg)
+    brightness(118%) contrast(119%);
+}

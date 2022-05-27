@@ -20,7 +20,11 @@ const Part = ({ part }) => {
   return (
     <div className="card bg-base-50 shadow-xl">
       <figure className="px-10 pt-10 bg-sky-100">
-        <img src={img} alt={`Car ${name}`} className="rounded-xl max-h-72" />
+        <img
+          className="rounded-xl max-h-72 hover:rotate-12 duration-300"
+          src={img}
+          alt={`Car ${name}`}
+        />
       </figure>
       <div className="card-body">
         <h2 className="card-title text-primary">{name}</h2>
