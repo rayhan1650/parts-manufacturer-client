@@ -1,4 +1,5 @@
 import React from "react";
+import ReactStars from "react-rating-stars-component";
 
 const Review = ({ review }) => {
   const { name, description, rating } = review;
@@ -7,7 +8,18 @@ const Review = ({ review }) => {
       <div className="card-body">
         <h2 className="card-title text-primary">{name}</h2>
         <p>{description}</p>
-        <h4>Rating: {rating}</h4>
+        <div className="flex justify-between items-center">
+          <div>
+            <ReactStars
+              edit={false}
+              value={rating}
+              isHalf={true}
+              size={20}
+              activeColor="#E48111"
+            />
+          </div>
+          <div className="text-warning font-bold">{rating}</div>
+        </div>
       </div>
     </div>
   );
