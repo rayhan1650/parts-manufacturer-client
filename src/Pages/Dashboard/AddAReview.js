@@ -3,10 +3,11 @@ import ReactStars from "react-rating-stars-component";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import axios from "axios";
 
 const AddAReview = () => {
   const [user] = useAuthState(auth);
-  const [rating, setRating] = useState(0);
+  const [giveRating, setGiveRating] = useState(0);
   const {
     register,
     formState: { errors },
@@ -14,10 +15,24 @@ const AddAReview = () => {
   } = useForm();
 
   const ratingChanged = (num) => {
-    setRating(num);
+    setGiveRating(num);
   };
   const onSubmit = (data) => {
-    console.log(data.comment, rating, user.displayName);
+    const name = user.displayName;
+    const description = data.comment;
+    const rating = giveRating;
+    axios
+      .post("http://localhost:5000/reviews", {
+        name,
+        description,
+        rating,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="flex justify-center items-center mt-8">
@@ -36,7 +51,9 @@ const AddAReview = () => {
                   activeColor="#E48111"
                 />
               </div>
-              <div className="text-warning text-2xl font-bold">{rating}</div>
+              <div className="text-warning text-2xl font-bold">
+                {giveRating}
+              </div>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <textarea
