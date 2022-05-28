@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import auth from "../../../firebase.init";
+import { toast } from "react-toastify";
 
 const ModalPurchase = ({ parts, setOpenModal }) => {
   const { minOrderQuantity, availableQuantity, pricePerUnit, name, img } =

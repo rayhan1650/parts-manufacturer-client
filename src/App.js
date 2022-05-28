@@ -14,6 +14,8 @@ import SignUp from "./Pages/Login/SignUp/SignUp";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Header from "./Pages/Shared/Header/Header";
 import PageNotFound from "./Pages/Shared/PageNotFound/PageNotFound";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [displayName, setDisplayName] = useState("");
@@ -56,6 +58,7 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }
