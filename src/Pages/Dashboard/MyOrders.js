@@ -16,8 +16,35 @@ const MyOrders = () => {
     return <Loading />;
   }
   return (
-    <div>
-      <h2>My orders:{data.length}</h2>
+    <div className="lg:px-6">
+      <h2 className="text-center text-2xl mt-10 mb-5 text-accent">My orders</h2>
+
+      <div className="overflow-x-auto">
+        <table className="table table-compact w-full">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Parts Name</th>
+              <th>Quantity</th>
+              <th>Total Price</th>
+              <th>Payment</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((p, index) => (
+              <tr key={index}>
+                <th>{index + 1}</th>
+                <td>{p.productName}</td>
+                <td>{p.quantity}</td>
+                <td>${p.totalPrice}</td>
+                <td>
+                  <button className="btn btn-xs">Pay</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
