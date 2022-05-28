@@ -32,8 +32,8 @@ const SignUp = ({ getName }) => {
 
   let signInError;
 
-  if (user || gUser) {
-    // navigate("/home");
+  if (token) {
+    navigate("/home");
   }
 
   if (error || gError || updateError) {
