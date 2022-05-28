@@ -19,6 +19,9 @@ import "react-toastify/dist/ReactToastify.css";
 import AllUsers from "./Pages/Dashboard/AllUsers";
 import RequireAdmin from "./Pages/Login/RequireAdmin/RequireAdmin";
 import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
+import ManageAllOrders from "./Pages/Dashboard/ManageAllOrders";
+import AddAProduct from "./Pages/Dashboard/AddAProduct";
+import ManageProducts from "./Pages/Dashboard/ManageProducts";
 
 function App() {
   const [displayName, setDisplayName] = useState("");
@@ -53,14 +56,38 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route index element={<MyOrders />}></Route>
+          <Route index element={<MyProfile />}></Route>
           <Route path="review" element={<AddAReview />}></Route>
-          <Route path="profile" element={<MyProfile />}></Route>
+          <Route path="myorders" element={<MyOrders />}></Route>
           <Route
             path="users"
             element={
               <RequireAdmin>
                 <AllUsers />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageallorders"
+            element={
+              <RequireAdmin>
+                <ManageAllOrders />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="addaproduct"
+            element={
+              <RequireAdmin>
+                <AddAProduct />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageproducts"
+            element={
+              <RequireAdmin>
+                <ManageProducts />
               </RequireAdmin>
             }
           ></Route>
