@@ -16,6 +16,7 @@ import Header from "./Pages/Shared/Header/Header";
 import PageNotFound from "./Pages/Shared/PageNotFound/PageNotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AllUsers from "./Pages/Dashboard/AllUsers";
 
 function App() {
   const [displayName, setDisplayName] = useState("");
@@ -51,7 +52,8 @@ function App() {
         >
           <Route index element={<MyOrders />}></Route>
           <Route path="review" element={<AddAReview />}></Route>
-          <Route path="history" element={<MyProfile />}></Route>
+          <Route path="profile" element={<MyProfile />}></Route>
+          <Route path="users" element={<AllUsers />}></Route>
           {/* <Route path="users" element={<RequireAdmin><Users></Users></RequireAdmin>}></Route> */}
         </Route>
 

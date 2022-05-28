@@ -10,6 +10,7 @@ const Header = ({ displayName }) => {
   const dashboardURL = location.pathname.includes("/dashboard");
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem("accessToken");
   };
 
   if (loading) {
