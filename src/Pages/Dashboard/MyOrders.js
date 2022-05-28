@@ -9,12 +9,15 @@ import { signOut } from "firebase/auth";
 const MyOrders = () => {
   const [user] = useAuthState(auth);
   const { isLoading, data } = useQuery("myorders", () =>
-    fetch(`http://localhost:5000/bookings?email=${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => {
+    fetch(
+      `https://serene-beyond-82900.herokuapp.com/bookings?email=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => {
       if (res.status === 401 || res.status === 403) {
         signOut(auth);
         localStorage.removeItem("accessToken");

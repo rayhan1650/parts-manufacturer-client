@@ -4,7 +4,7 @@ import Loading from "../Shared/Loading/Loading";
 
 const ManageAllOrders = () => {
   const { isLoading, data } = useQuery("myorders", () =>
-    fetch("http://localhost:5000/allbookings", {
+    fetch("https://serene-beyond-82900.herokuapp.com/allbookings", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

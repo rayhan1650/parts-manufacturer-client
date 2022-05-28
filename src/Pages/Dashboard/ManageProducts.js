@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const ManageProducts = () => {
   const [parts, setParts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/parts")
+    fetch("https://serene-beyond-82900.herokuapp.com/parts")
       .then((res) => res.json())
       .then((data) => setParts(data));
   }, []);

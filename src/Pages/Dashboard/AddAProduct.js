@@ -39,7 +39,7 @@ const AddAProduct = () => {
 
           //send to your db
           axios
-            .post("http://localhost:5000/parts", product)
+            .post("https://serene-beyond-82900.herokuapp.com/parts", product)
             .then((inserted) => {
               console.log("product", inserted);
             })

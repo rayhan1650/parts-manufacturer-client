@@ -47,7 +47,7 @@ const ModalPurchase = ({ parts, setOpenModal }) => {
     };
 
     axios
-      .post("http://localhost:5000/bookings", purchase)
+      .post("https://serene-beyond-82900.herokuapp.com/bookings", purchase)
       .then((res) => {
         toast("Purchase info send to database.");
         setOpenModal(false);

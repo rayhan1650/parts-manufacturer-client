@@ -22,7 +22,7 @@ const AddAReview = () => {
     const description = data.comment;
     const rating = giveRating;
     axios
-      .post("http://localhost:5000/reviews", {
+      .post("https://serene-beyond-82900.herokuapp.com/reviews", {
         name,
         description,
         rating,
