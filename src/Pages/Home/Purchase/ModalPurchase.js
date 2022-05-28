@@ -10,7 +10,7 @@ const ModalPurchase = ({ parts, setOpenModal }) => {
     parts;
 
   const [user] = useAuthState(auth);
-  const [btnActive, setBtnActive] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const {
     register,
@@ -21,6 +21,10 @@ const ModalPurchase = ({ parts, setOpenModal }) => {
   //   const handleQuantity = (q) => {
   //     console.log(q);
   //   };
+
+  const handleBtn = (e) => {
+    setIsDisabled(e);
+  };
 
   const onSubmit = (data) => {
     const email = user?.email;
@@ -120,6 +124,7 @@ const ModalPurchase = ({ parts, setOpenModal }) => {
                 defaultValue={minOrderQuantity}
               />
 
+              {/* {errors.quantity ? setIsDisabled(true) : setIsDisabled(false)} */}
               <p className="text-red-500">
                 {errors.quantity &&
                   `Input quantity between ${minOrderQuantity} & ${availableQuantity}`}
@@ -158,7 +163,7 @@ const ModalPurchase = ({ parts, setOpenModal }) => {
 
             <input
               htmlFor="purchase-modal"
-              disabled={btnActive}
+              disabled={isDisabled}
               type="submit"
               value="Submit"
               className="btn btn-secondary w-full max-w-xs"

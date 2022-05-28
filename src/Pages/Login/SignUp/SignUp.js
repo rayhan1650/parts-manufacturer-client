@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
+import useToken from "../../../hooks/useToken";
 
 const SignUp = ({ getName }) => {
   const handleName = (name) => {
@@ -19,6 +20,8 @@ const SignUp = ({ getName }) => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  const [token] = useToken(user || gUser);
   const {
     register,
     formState: { errors },
@@ -30,7 +33,7 @@ const SignUp = ({ getName }) => {
   let signInError;
 
   if (user || gUser) {
-    navigate("/home");
+    // navigate("/home");
   }
 
   if (error || gError || updateError) {

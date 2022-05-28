@@ -6,7 +6,7 @@ import Loading from "../Shared/Loading/Loading";
 
 const MyOrders = () => {
   const [user] = useAuthState(auth);
-  const { isLoading, data } = useQuery(["myorders", user], () =>
+  const { isLoading, data } = useQuery("myorders", () =>
     fetch(`http://localhost:5000/bookings?email=${user.email}`).then((res) =>
       res.json()
     )
