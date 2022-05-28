@@ -18,6 +18,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AllUsers from "./Pages/Dashboard/AllUsers";
 import RequireAdmin from "./Pages/Login/RequireAdmin/RequireAdmin";
+import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 
 function App() {
   const [displayName, setDisplayName] = useState("");
@@ -32,6 +33,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/myportfolio" element={<MyPortfolio />} />
         <Route path="/signup" element={<SignUp getName={getName} />} />
 
         <Route

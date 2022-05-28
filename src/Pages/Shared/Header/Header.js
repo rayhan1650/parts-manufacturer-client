@@ -54,6 +54,9 @@ const Header = ({ displayName }) => {
                 <Link to="/dashboard">Dashboard</Link>
               </li>
             )}
+            <li>
+              <Link to="/myportfolio">My Portfolio</Link>
+            </li>
 
             <li>
               {user ? (
@@ -93,6 +96,9 @@ const Header = ({ displayName }) => {
               <Link to="/dashboard">Dashboard</Link>
             </li>
           )}
+          <li>
+            <Link to="/myportfolio">My Portfolio</Link>
+          </li>
         </ul>
       </div>
       {/* for end nav  */}
