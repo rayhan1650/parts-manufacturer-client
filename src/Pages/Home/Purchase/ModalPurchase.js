@@ -45,6 +45,7 @@ const ModalPurchase = ({ parts, setOpenModal }) => {
     axios
       .post("http://localhost:5000/bookings", purchase)
       .then((res) => {
+        toast("Purchase info send to database.");
         setOpenModal(false);
         console.log(res);
       })
