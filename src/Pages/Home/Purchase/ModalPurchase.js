@@ -3,9 +3,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import auth from "../../../firebase.init";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const ModalPurchase = ({ parts, setOpenModal }) => {
-  const { minOrderQuantity, availableQuantity, pricePerUnit, name, img } =
+  const { minOrderQuantity, availableQuantity, pricePerUnit, name, _id } =
     parts;
 
   const [user] = useAuthState(auth);
@@ -24,20 +25,32 @@ const ModalPurchase = ({ parts, setOpenModal }) => {
   const onSubmit = (data) => {
     const email = user?.email;
     const userName = user?.displayName;
+    const productId = _id;
     const productName = name;
     const phone = data.phone;
     const address = data.address;
     const quantity = data.quantity || minOrderQuantity;
+    const totalPrice = parseInt(quantity) * parseInt(pricePerUnit);
     const purchase = {
       userName,
       email,
+      productId,
       productName,
       quantity,
+      totalPrice,
       phone,
       address,
     };
-    console.log(purchase);
-    setOpenModal(false);
+
+    axios
+      .post("http://localhost:5000/bookings", purchase)
+      .then((res) => {
+        setOpenModal(false);
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div>
