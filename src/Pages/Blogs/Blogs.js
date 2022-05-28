@@ -2,7 +2,7 @@ import React from "react";
 
 const Blogs = () => {
   return (
-    <div className="px-14">
+    <div className="px-14 mb-6">
       <h2 className="font-bold text-2xl mt-10">
         Q1: How will you improve the performance of a React Application?
       </h2>
@@ -85,7 +85,27 @@ const Blogs = () => {
       </p>
 
       <h2 className="font-bold text-2xl mt-10">
-        Q6: What is a unit test? Why should write unit tests?
+        Q4: Why you do not set the state directly in React. For example, if you
+        have const [products, setProducts] = useState([]). Why you do not set
+        products = [...] instead, you use the setProducts?
+      </h2>
+      <h4 className="font-bold text-xl underline ">Answer:</h4>
+      <p className="text-lg">
+        The useState Hook can be used to keep track of strings, numbers,
+        booleans, arrays, objects, and any combination of these. useState is a
+        Hook that allows us to have state variables in functional components. We
+        pass the initial state to this function and it returns a variable with
+        the current state value (not necessarily the initial state) and another
+        function to update this value. The update method of a state is setState
+        function. setState function updates state value immediately and we need
+        not refresh page for updated value. But if we use ... spread operator to
+        update state value it can't give us latest value immediately and it will
+        create another object to update state. That is why we don't set state
+        value directly.
+      </p>
+
+      <h2 className="font-bold text-2xl mt-10">
+        Q5: What is a unit test? Why should write unit tests?
       </h2>
       <h4 className="font-bold text-xl underline ">Answer:</h4>
       <p className="text-lg">
