@@ -39,7 +39,10 @@ const AddAProduct = () => {
 
           //send to your db
           axios
-            .post("https://serene-beyond-82900.herokuapp.com/parts", product)
+            .post(
+              "https://parts-manufacturer-server-production.up.railway.app/parts",
+              product
+            )
             .then((inserted) => {
               console.log("product", inserted);
             })

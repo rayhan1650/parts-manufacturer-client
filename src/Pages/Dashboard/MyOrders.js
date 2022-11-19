@@ -10,7 +10,7 @@ const MyOrders = () => {
   const [user] = useAuthState(auth);
   const { isLoading, data } = useQuery("myorders", () =>
     fetch(
-      `https://serene-beyond-82900.herokuapp.com/bookings?email=${user.email}`,
+      `https://parts-manufacturer-server-production.up.railway.app/bookings?email=${user.email}`,
       {
         method: "GET",
         headers: {

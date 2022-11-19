@@ -47,7 +47,10 @@ const ModalPurchase = ({ parts, setOpenModal }) => {
     };
 
     axios
-      .post("https://serene-beyond-82900.herokuapp.com/bookings", purchase)
+      .post(
+        "https://parts-manufacturer-server-production.up.railway.app/bookings",
+        purchase
+      )
       .then((res) => {
         toast("Purchase info send to database.");
         setOpenModal(false);

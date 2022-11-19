@@ -6,7 +6,7 @@ const Purchase = () => {
   const { id } = useParams();
   const [openModal, setOpenModal] = useState(false);
   const [parts, setParts] = useState({});
-  const url = `https://serene-beyond-82900.herokuapp.com/parts/${id}`;
+  const url = `https://parts-manufacturer-server-production.up.railway.app/parts/${id}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())

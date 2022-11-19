@@ -4,12 +4,15 @@ import Loading from "../Shared/Loading/Loading";
 
 const ManageAllOrders = () => {
   const { isLoading, data } = useQuery("myorders", () =>
-    fetch("https://serene-beyond-82900.herokuapp.com/allbookings", {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => {
+    fetch(
+      "https://parts-manufacturer-server-production.up.railway.app/allbookings",
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => {
       return res.json();
     })
   );

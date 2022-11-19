@@ -22,11 +22,14 @@ const AddAReview = () => {
     const description = data.comment;
     const rating = giveRating;
     axios
-      .post("https://serene-beyond-82900.herokuapp.com/reviews", {
-        name,
-        description,
-        rating,
-      })
+      .post(
+        "https://parts-manufacturer-server-production.up.railway.app/reviews",
+        {
+          name,
+          description,
+          rating,
+        }
+      )
       .then((res) => {
         console.log(res);
       })
